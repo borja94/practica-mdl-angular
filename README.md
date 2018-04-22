@@ -1,12 +1,6 @@
-# Tecnología Spring: Proyecto TPV - Front-end
-#### Back-end con Tecnologías de Código Abierto (SPRING)
+# Practica de la asginatura MDL 
 #### [Máster en Ingeniería Web por la U.P.M.](http://miw.etsisi.upm.es)
 
-> Proyecto Front-end completo para el uso de la tecnología Angular-Spring.  
-> El Back-end se desarrolla en Spring en el proyecto [betca-tpv-spring](https://github.com/miw-upm/betca-tpv-spring).
-> Se debe arrancar el [API]() en linea de comando mediante:
-> * A partir del código fuente: `>mvn clean spring-boot:run`
-> * A partir del JAR: `java -jar release.jar`  
 
 Para más información, en la [wiki](https://github.com/miw-upm/betca-tpv-angular/wiki)
 
@@ -37,4 +31,3 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-###### Autor: Jesús Bernal Bermúdez U.P.M.
