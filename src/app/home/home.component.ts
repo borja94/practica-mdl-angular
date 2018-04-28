@@ -28,10 +28,6 @@ export class HomeComponent {
     private router: Router,
     private userService: UserService) {
 
-    this.home();
-    this.userService.loggedInUsername().subscribe(
-      user => this.username = user.username
-    );
   }
 
   home() {

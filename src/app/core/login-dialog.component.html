@@ -1,16 +1,18 @@
-<h3 mat-dialog-title>Entrar</h3>
-<mat-dialog-content>
+<h3 mat-dialog-title>{{title}}</h3>
+<div mat-dialog-content>
     <mat-form-field>
-        <input matInput type="text" placeholder="Móvil" [(ngModel)]="mobile" />
-        <button mat-button *ngIf="mobile" matSuffix mat-icon-button aria-label="Clear" (click)="mobile=''">
+        <input matInput type="text" placeholder="Email" [(ngModel)]="email" />
+        <button mat-button *ngIf="email" matSuffix mat-icon-button aria-label="Clear" (click)="email=''">
             <mat-icon>close</mat-icon>
         </button>
     </mat-form-field>
     <mat-form-field>
         <input matInput type="password" placeholder="Clave" [(ngModel)]="password" />
     </mat-form-field>
-</mat-dialog-content>
-<mat-dialog-actions>
+    <mat-checkbox *ngIf="registro" [(ngModel)]="hotel_resp">¿Responsable de hotel?</mat-checkbox>
+    <a *ngIf="!registro" (click)="setRegistroMode()">¿Registrarse?</a>
+</div>
+<div mat-dialog-actions>
     <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button [mat-dialog-close]="this" cdkFocusInitial>Entrar</button>
-</mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="this" cdkFocusInitial>{{title}}</button>
+</div>
