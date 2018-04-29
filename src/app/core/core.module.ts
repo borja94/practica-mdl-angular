@@ -10,11 +10,14 @@ import {
     MatButtonModule,
     MatSortModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    MatCheckbox,
+    MatCheckboxModule
 } from '@angular/material';
 
 import { HttpService } from './http.service';
 import { TokensService } from './tokens.service';
+import { RegisterService } from './register.service';
 
 import { DateComponent } from './date.component';
 import { LoginDialogComponent } from './login-dialog.component';
@@ -32,6 +35,7 @@ import { CrudComponent } from './crud.component';
         MatInputModule,
         MatSortModule,
         MatTableModule,
+        MatCheckboxModule,
     ],
     declarations: [
         DateComponent,
@@ -48,7 +52,8 @@ import { CrudComponent } from './crud.component';
     ],
     providers: [
         HttpService,
-        TokensService
+        TokensService,
+        RegisterService,
     ]
 })
 export class CoreModule { }

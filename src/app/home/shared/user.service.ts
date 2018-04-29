@@ -21,7 +21,7 @@ export class UserService {
     }
 
     create(user: User): Observable<boolean> {
-        return this.httpService.authToken().successful().post(UserService.END_POINT, user).map(
+        return this.httpService.authToken().post(UserService.END_POINT, user).map(
             data => {
                 return data;
             }
@@ -29,7 +29,7 @@ export class UserService {
     }
 
     put(user: User): Observable<boolean> {
-        return this.httpService.authToken().successful().put(UserService.END_POINT + '/' + user.mobile, user).map(
+        return this.httpService.authToken().put(UserService.END_POINT + '/' + user.mobile, user).map(
             data => {
                 return data;
             }

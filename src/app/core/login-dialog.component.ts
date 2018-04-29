@@ -5,6 +5,14 @@ import { Component} from '@angular/core';
     styleUrls: ['dialog.component.css']
 })
 export class LoginDialogComponent {
-    mobile: number;
+    registro = false;
+    hotel_resp: boolean;
+    email: string;
     password: string;
+    title = 'Entrar';
+
+    setRegistroMode () {
+        this.registro = true;
+        this.title = 'Registro';
+    }
 }

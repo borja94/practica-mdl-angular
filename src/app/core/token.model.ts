@@ -2,6 +2,6 @@ import { Role } from './role.model';
 
 export interface Token {
     token: string;
-    roles: Array<Role>;
+    role: Role;
     creationDate: number;
 }
