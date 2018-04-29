@@ -128,6 +128,10 @@ export class HttpService {
                 });
     }
 
+    getToken (): Token {
+        return this.token;
+    }
+
     private createOptions(): RequestOptions {
         const options: RequestOptions = new RequestOptions({
             headers: this.headers,
