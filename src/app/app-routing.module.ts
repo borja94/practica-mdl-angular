@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CancelYesDialogComponent } from './core/cancel-yes-dialog.component';
 import { HomeComponent } from './home/home.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { ProvidersComponent } from './home/providers/providers.component';
+import { RoomSearchComponent } from './home/roomSearch/roomSearch.component';
 
 
 const appRoutes: Routes = [
@@ -13,7 +13,7 @@ const appRoutes: Routes = [
   {
     path: HomeComponent.URL, component: HomeComponent,
     children: [
-      { path: ProvidersComponent.URL, component: ProvidersComponent },
+      { path: RoomSearchComponent.URL, component: RoomSearchComponent },
     ]
   }
 ];
@@ -25,7 +25,7 @@ const appRoutes: Routes = [
 export class AppRoutingModule {
   static COMPONENTS = [
     HomeComponent,
-    ProvidersComponent,
+    RoomSearchComponent,
     WelcomeComponent,
   ];
 
