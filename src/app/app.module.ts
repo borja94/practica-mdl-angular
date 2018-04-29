@@ -16,6 +16,7 @@ import { HttpService } from './core/http.service';
 import { TokensService } from './core/tokens.service';
 import { UserService } from './home/shared/user.service';
 import { HotelService} from './home/shared/hotel.service';
+import { RoomService} from './home/shared/room.service';
 import { AppComponent } from './app.component';
 import { ChartsModule } from 'ng2-charts';
 
@@ -51,6 +52,7 @@ import { ToastrModule } from 'ngx-toastr';
   providers: [
     UserService,
     HotelService,
+    RoomService,
   ]
 })
 export class AppModule {
