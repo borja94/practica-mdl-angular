@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
 @Component({
-    templateUrl: 'providers.component.html'
+    templateUrl: 'roomSearch.component.html'
 })
-export class ProvidersComponent implements OnInit {
-    static URL = 'providers';
+export class RoomSearchComponent implements OnInit {
+    static URL = 'roomSearch';
 
-    title = 'Providers management';
+    title = 'Busqueda de reservas';
     columns = ['company'];
     onlyActive = true;
 
