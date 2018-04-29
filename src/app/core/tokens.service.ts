@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-
 import { Observable } from 'rxjs/Observable';
 import { HttpService } from './http.service';
-
 import { Role } from './role.model';
 
 @Injectable()

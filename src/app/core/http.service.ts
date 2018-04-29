@@ -57,9 +57,8 @@ export class HttpService {
 
     login(email: string, password: string, endPoint: string): Observable<any> {
         return this.authBasic(email, password).post(endPoint).map(
-            token => {
-                this.token = token;
-                this.email = email;
+            response => {
+                this.token = JSON.parse(response._body);
             },
             error => this.logout()
         );
