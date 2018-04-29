@@ -10,7 +10,18 @@
       <span>Salir</span>
     </button>
   </span>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
 </mat-toolbar>
-
-<h1>Hola {{role}}</h1>
-<!-- <router-outlet></router-outlet> -->
+<mat-menu x-position="before" #menu="matMenu">
+  <button mat-menu-item (click)="home()">
+    <mat-icon>home</mat-icon>
+    <span>Principal</span>
+  </button>
+  <button mat-menu-item (click)="roomSearch()">
+    <mat-icon>search</mat-icon>
+    <span>Busqueda de habitaciones</span>
+  </button>
+</mat-menu>
+<router-outlet></router-outlet>

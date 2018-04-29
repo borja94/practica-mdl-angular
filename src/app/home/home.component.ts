@@ -27,6 +27,7 @@ export class HomeComponent {
     private userService: UserService,
     private httpService: HttpService) {
       this.role = this.httpService.getToken().role;
+      console.log(this.httpService.getToken());
   }
 
   home() {
@@ -35,5 +36,9 @@ export class HomeComponent {
 
   logout() {
     this.tokensService.logout();
+  }
+
+  roomSearch() {
+    this.router.navigate([HomeComponent.URL, RoomSearchComponent.URL]);
   }
 }
