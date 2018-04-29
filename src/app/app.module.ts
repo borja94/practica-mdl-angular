@@ -15,6 +15,7 @@ import { CoreModule } from './core/core.module';
 import { HttpService } from './core/http.service';
 import { TokensService } from './core/tokens.service';
 import { UserService } from './home/shared/user.service';
+import { HotelService} from './home/shared/hotel.service';
 import { AppComponent } from './app.component';
 import { ChartsModule } from 'ng2-charts';
 
@@ -48,7 +49,8 @@ import { ToastrModule } from 'ngx-toastr';
   entryComponents: [AppRoutingModule.COMPONENT_FACTORY],
   bootstrap: [AppComponent],
   providers: [
-    UserService
+    UserService,
+    HotelService,
   ]
 })
 export class AppModule {
