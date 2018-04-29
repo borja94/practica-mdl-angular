@@ -1,5 +1,44 @@
 <h1>Busqueda de habitaciones</h1>
 
+<div class="container" fxLayout fxLayout.xs="column" fxLayoutGap="2.5%">
+    <div fxFlex="32%">
+        <mat-form-field>
+            <mat-select placeholder="Hotels" [formControl]="hotels" multiple>
+                <mat-option *ngFor="let item of hotelNames" [value]="item">{{item}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div fxFlex="32%">
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Fecha de la reserva" [formControl]="searchDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div fxFlex="32%">
+        <mat-form-field>
+            <mat-select placeholder="Tipo de habitación" [formControl]="roomType" multiple>
+                <mat-option value="SINGLE">
+                    SINGLE
+                </mat-option>
+                <mat-option value="DOUBLE">
+                    DOUBLE
+                </mat-option>
+                <mat-option value="TRIPLE">
+                    TRIPLE
+                </mat-option>
+                <mat-option value="SUITE">
+                    SUITE
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div fxFlex="25%">
+        <button mat-fab color="primary" (click)="searchRoomsByFilters()">
+            <mat-icon>search</mat-icon>
+        </button>
+    </div>
+</div>
 <div class="basic-container">
     <mat-accordion>
         <mat-expansion-panel *ngFor="let item of roomsData">
