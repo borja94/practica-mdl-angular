@@ -10,7 +10,28 @@ export class RoomSearchComponent implements OnInit {
     title = 'Busqueda de reservas';
     columns = ['company'];
     onlyActive = true;
-
+    roomsData = [
+        {
+            hotel: 'hotel 1',
+            numRooms: 3,
+            description: 'jsakldjslkjasdlkjsa'
+        },
+        {
+            hotel: 'hotel 1',
+            numRooms: 3,
+            description: 'jsakldjslkjasdlkjsa'
+        },
+        {
+            hotel: 'hotel 1',
+            numRooms: 3,
+            description: 'jsakldjslkjasdlkjsa'
+        },
+        {
+            hotel: 'hotel 1',
+            numRooms: 3,
+            description: 'jsakldjslkjasdlkjsa'
+        },
+    ];
     constructor(public dialog: MatDialog) {
     }
 

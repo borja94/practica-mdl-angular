@@ -1,1 +1,18 @@
 <h1>Busqueda de habitaciones</h1>
+
+<div class="basic-container">
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let item of roomsData">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{item.hotel}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{item.numRooms}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            {{item.description}}
+        </mat-expansion-panel>
+
+    </mat-accordion>
+</div>
