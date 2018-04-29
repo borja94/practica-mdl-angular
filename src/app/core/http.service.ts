@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, URLSearchParams, ResponseContentType } from '@angular/http';
 import { HttpResponse } from '@angular/common/http/src/response';
 import { Router } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
 
-import { MatSnackBar, _MatOptgroupMixinBase } from '@angular/material';
+import { _MatOptgroupMixinBase } from '@angular/material';
 
 import { Token } from './token.model';
 import { Role } from './role.model';
@@ -37,7 +37,9 @@ export class HttpService {
     private successfulNotification = undefined;
 
 
-    constructor(private http: Http, private snackBar: MatSnackBar, private router: Router) {
+    constructor(private http: Http,
+        private toastrService: ToastrService,
+        private router: Router) {
         this.resetOptions();
     }
 
@@ -151,23 +153,21 @@ export class HttpService {
 
 
     private handleError(response: Response): any {
-        let error: Error;
+
         if (response.status === HttpService.UNAUTHORIZED) {
             this.logout();
         }
         try {
-            error = {
-                httpError: response.status, exception: response.json().exception,
-                message: response.json().message, path: response.json().path
+            const error: Error = {
+                httpError: response.status,
+                exception: response.json().exception,
+                message: response.json().message,
+                path: response.json().path
             };
-            this.snackBar.open(error.message, 'Error', {
-                duration: 8000
-            });
+            this.toastrService.error('Error', error.message);
             return Observable.throw(error);
         } catch (e) {
-            this.snackBar.open(response.toString(), 'Error', {
-                duration: 8000
-            });
+            this.toastrService.error('Error', response.toString());
             return Observable.throw(response);
         }
     }

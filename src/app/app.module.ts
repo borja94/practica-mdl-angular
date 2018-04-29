@@ -18,14 +18,16 @@ import { UserService } from './home/shared/user.service';
 import { AppComponent } from './app.component';
 import { ChartsModule } from 'ng2-charts';
 
-
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   imports: [
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-center'
+    }),
     AppMaterialModule,
 
     CdkTableModule,

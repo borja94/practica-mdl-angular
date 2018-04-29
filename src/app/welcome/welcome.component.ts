@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
-
+import { ToastrService } from 'ngx-toastr';
 import { TokensService } from '../core/tokens.service';
 import { LoginDialogComponent } from '../core/login-dialog.component';
 import { HomeComponent } from '../home/home.component';
@@ -18,6 +18,7 @@ export class WelcomeComponent {
   constructor(public dialog: MatDialog,
     private tokensService: TokensService,
     private registerService: RegisterService,
+    private toastrService: ToastrService,
     private router: Router) {
   }
 
@@ -29,10 +30,10 @@ export class WelcomeComponent {
           return;
         } else if (loginObject.registro) {
           this.registrar(loginObject);
-        } else if (!loginObject.registro) {}
+        } else if (!loginObject.registro) {
           this.autenticar(loginObject);
         }
-    );
+      });
   }
 
   registrar (loginObject) {
@@ -43,9 +44,11 @@ export class WelcomeComponent {
       role: role
     };
     this.registerService.register(data).subscribe (
-      () => {
-        // TODO mensaje
-       }
+      (status) => {
+        if (status === 200) {
+          this.toastrService.success('Se ha registrado en la aplicación');
+        }
+      }
     );
   }
 

@@ -8,6 +8,8 @@ export class RegisterService {
     constructor(private httpService: HttpService) {}
 
     public register (dataIn: any): Observable<any> {
-        return this.httpService.post('/users', dataIn);
+        return this.httpService.post('/users', dataIn).map(
+            (response) => response.status
+        );
     }
 }
