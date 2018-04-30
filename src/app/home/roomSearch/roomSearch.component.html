@@ -44,13 +44,15 @@
         <mat-expansion-panel *ngFor="let item of roomsData">
             <mat-expansion-panel-header>
                 <mat-panel-title>
-                    {{item.hotel}}
+                    <strong>Hotel:</strong>{{item.hotel}}
                 </mat-panel-title>
                 <mat-panel-description>
-                    {{item.numRooms}}
+                    <strong>Num.habitaciones:</strong>{{item.numRooms}}
+                    <strong style="padding-left:5em">Tipo de habitación:</strong>{{item.roomType}}
                 </mat-panel-description>
             </mat-expansion-panel-header>
             {{item.description}}
+            <button mat-raised-button color="primary" (click)="bookRoom(item.id)">Reservar</button>
         </mat-expansion-panel>
 
     </mat-accordion>
