@@ -25,10 +25,13 @@ export class RoomSearchComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.searchRoomsByFilters();
     }
 
     searchRoomsByFilters() {
-        this.roomService.searchRooms(this.searchDate.value, this.hotels.value, this.roomType.value)
+        const hotelSelected = this.hotels.value != null ? this.hotels.value : '';
+        const roomTypeSelected = this.roomType.value != null ? this.roomType.value : '';
+        this.roomService.searchRooms(this.searchDate.value, hotelSelected, roomTypeSelected)
             .subscribe(
                 data => {
                     console.log(data);
@@ -37,16 +40,19 @@ export class RoomSearchComponent implements OnInit {
                     data.forEach(element => {
                         this.roomsData.push(
                             {
+                                id: 1,
                                 hotel: element.hotelName,
                                 numRooms: 1,
-                                description: element.Characteristics,
+                                description: element.characteristics,
+                                roomType: element.roomType,
                             }
                         );
                     });
-
-                    console.log(data);
                 }
             );
 
+    }
+    bookRoom(id) {
+        console.log(id);
     }
 }
