@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material';
+import { RoomSearchComponent } from '../roomSearch/roomSearch.component';
+import { HotelService } from '../shared/hotel.service';
+import { FormControl } from '@angular/forms';
+import { RoomService } from '../shared/room.service';
+import { Book } from '../shared/book.model';
+import { BookService } from '../shared/book.service';
 
 @Component({
     templateUrl: 'roomBooking.component.html'
@@ -10,32 +18,19 @@ export class RoomBookingComponent implements OnInit {
     title = 'Reserva de habitaciones';
     columns = ['company'];
     onlyActive = true;
-    roomsData = [
-        {
-            hotel: 'hotel 1',
-            numRooms: 3,
-            description: 'jsakldjslkjasdlkjsa'
-        },
-        {
-            hotel: 'hotel 1',
-            numRooms: 3,
-            description: 'jsakldjslkjasdlkjsa'
-        },
-        {
-            hotel: 'hotel 1',
-            numRooms: 3,
-            description: 'jsakldjslkjasdlkjsa'
-        },
-        {
-            hotel: 'hotel 1',
-            numRooms: 3,
-            description: 'jsakldjslkjasdlkjsa'
-        },
-    ];
-    constructor(public dialog: MatDialog) {
+
+    constructor(private router: Router,private hotelService: HotelService, private roomService: RoomService, private bookService: BookService) {
     }
 
     ngOnInit(): void {
+
     }
 
+    cancel(){
+        this.router.navigate(['/roomSearch']);
+    }
+    
+    book(book: Book){
+        this.bookService.book(book.nombreHotel, book.nombreUsuario, book.fecha, book.fechaSalida, book.hora, book.horaSalida);
+    }
 }
