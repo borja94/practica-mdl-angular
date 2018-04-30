@@ -1,0 +1,26 @@
+</div>
+<h1>Reserva de habitaciones</h1>
+
+<div class="basic-container">
+    <mat-form-field>
+        <input matInput type="date" placeholder="Hotel" [(ngModel)]="nombreHotel" />
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Fecha entrada" [(ngModel)]="fecha">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="time" placeholder="Hour Entrada" [(ngModel)]="hora" />
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Fecha salida" [(ngModel)]="fechaSalida">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="time" placeholder="Hour Salida" [(ngModel)]="horaSalida" />
+    </mat-form-field>
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-button (click)="book()">Booking</button>
+</div>
