@@ -40,16 +40,19 @@ export class RoomSearchComponent implements OnInit {
                     data.forEach(element => {
                         this.roomsData.push(
                             {
+                                id: 1,
                                 hotel: element.hotelName,
                                 numRooms: 1,
-                                description: element.Characteristics,
+                                description: element.characteristics,
+                                roomType: element.roomType,
                             }
                         );
                     });
-
-                    console.log(data);
                 }
             );
 
+    }
+    bookRoom(id) {
+        console.log(id);
     }
 }
