@@ -1,17 +1,18 @@
-<h1>Historico de reservas</h1>
+<h1>Histórico de reservas</h1>
 
 <div class="basic-container">
     <mat-accordion>
-        <mat-expansion-panel *ngFor="let item of roomsData">
+        <mat-expansion-panel *ngFor="let item of bookingData">
             <mat-expansion-panel-header>
                 <mat-panel-title>
-                    <strong>Hotel:</strong>h1
+                    <strong>Hotel:</strong>{{item.nombreHotel}}
                 </mat-panel-title>
                 <mat-panel-description>
-                    <strong>Tipo de habitación:</strong>SINGLE
-                    <strong style="padding-left:5em">Fecha de la reserva:</strong>6/6/6
+                    <strong >Fecha de la reserva:</strong>{{item.fecha}}
+                    <strong style="padding-left:5em">Hora de la reserva:</strong>{{item.hora}}
                 </mat-panel-description>
             </mat-expansion-panel-header>
+            <strong style="padding-left:5em">Codigo de reserva:</strong>{{item.code}}
         </mat-expansion-panel>
 
     </mat-accordion>
