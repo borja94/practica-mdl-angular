@@ -15,29 +15,34 @@ import { BookService } from '../shared/book.service';
     templateUrl: 'roomBooking.component.html'
 })
 export class RoomBookingComponent implements OnInit {
-    static URL = 'roomBooking';
+    static URL = 'roomBooking/:idRoom/hotel/:hotel';
 
-    book : Book;
+    book: Book;
     title = 'Reserva de habitaciones';
     columns = ['company'];
     onlyActive = true;
-    idRoom:string;
+    idRoom: string;
 
     fecha = new FormControl(new Date());
     fechaSalida = new FormControl(new Date());
     hora = new FormControl();
-    nombreHotel = new FormControl();    
+    nombreHotel = new FormControl();
     horaSalida = new FormControl();
     nombreUsuario: string;
 
-    constructor(private route: ActivatedRoute, private router: Router, private hotelService: HotelService, private userService: UserService, private roomService: RoomService, private bookService: BookService) {
-        this.userService.loggedInUsername().subscribe(user=> this.nombreUsuario = user.email);
-        
+    constructor(private route: ActivatedRoute,
+        private router: Router,
+        private hotelService: HotelService,
+        private userService: UserService,
+        private roomService: RoomService,
+        private bookService: BookService) {
+        this.userService.loggedInUsername().subscribe(user => this.nombreUsuario = user.email);
+        this.nombreHotel.setValue(this.route.snapshot.params['hotel']);
+        this.idRoom = this.route.snapshot.params['idRoom'];
     }
 
     ngOnInit(): void {
-        this.nombreHotel = this.route.snapshot.params['nombreHotel'];
-        this.idRoom = this.route.snapshot.params['id'];
+
     }
 
     cancel() {
@@ -45,6 +50,9 @@ export class RoomBookingComponent implements OnInit {
     }
 
     bookRoom() {
-        this.bookService.book(this.idRoom, this.nombreHotel.value, this.nombreUsuario, this.fecha.value, this.fechaSalida.value, this.hora.value + ":00", this.horaSalida.value + ":00");
+        this.bookService.book(this.idRoom,
+            this.nombreHotel.value, this.nombreUsuario,
+            this.fecha.value, this.fechaSalida.value, this.hora.value + ':00',
+            this.horaSalida.value + ':00');
     }
 }

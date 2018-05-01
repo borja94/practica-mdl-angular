@@ -77,8 +77,4 @@ export class RoomSearchComponent implements OnInit {
         }
     }
 
-    bookRoom(id, nombreHotel) {
-        this.router.navigate(['/roomSearch', { id: 1 }]);
-        console.log(id);
-    }
 }

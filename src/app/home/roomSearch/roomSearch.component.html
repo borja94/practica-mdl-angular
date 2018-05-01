@@ -73,8 +73,8 @@
                 </mat-panel-description>
             </mat-expansion-panel-header>
             {{item.description}}
-            <button mat-raised-button color="primary" (click)="bookRoom(item.id, item.hotel)">Reservar</button>
+            <button mat-raised-button color="primary" [routerLink]="['/home/roomBooking', item.id, 'hotel', item.hotel]">Reservar</button>
         </mat-expansion-panel>
-
+        <!-- (click)="bookRoom(item.id, item.hotel)" -->
     </mat-accordion>
 </div>
