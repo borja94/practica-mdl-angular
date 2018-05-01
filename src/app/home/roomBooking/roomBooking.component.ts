@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material';
 import { RoomSearchComponent } from '../roomSearch/roomSearch.component';
+import { HomeComponent } from '../home.component';
 import { HotelService } from '../shared/hotel.service';
 import { FormControl } from '@angular/forms';
 import { RoomService } from '../shared/room.service';
@@ -20,19 +21,20 @@ export class RoomBookingComponent implements OnInit {
     onlyActive = true;
     fecha = new FormControl(new Date());
     fechaSalida = new FormControl(new Date());
+    hora = new FormControl();
+    horaSalida = new FormControl();
 
-    constructor(private router: Router,private hotelService: HotelService, private roomService: RoomService, private bookService: BookService) {
+    constructor(private router: Router, private hotelService: HotelService, private roomService: RoomService, private bookService: BookService) {
     }
 
     ngOnInit(): void {
-
     }
 
-    cancel(){
-        this.router.navigate(['/roomSearch']);
+    cancel() {
+        this.router.navigate([HomeComponent.URL, RoomSearchComponent.URL]);
     }
-    
-    book(book: Book){
+
+    book(book: Book) {
         this.bookService.book(book.nombreHotel, book.nombreUsuario, book.fecha, book.fechaSalida, book.hora, book.horaSalida);
     }
 }

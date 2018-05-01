@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { HotelService } from '../shared/hotel.service';
 import { FormControl } from '@angular/forms';
 import { RoomService } from '../shared/room.service';
+import { HomeComponent } from '../home.component';
+import { RoomBookingComponent } from '../roomBooking/roomBooking.component';
 
 @Component({
     templateUrl: 'roomSearch.component.html'
@@ -18,7 +21,7 @@ export class RoomSearchComponent implements OnInit {
     onlyActive = true;
     roomsData = [];
     hotelNames: string[];
-    constructor(private hotelService: HotelService, private roomService: RoomService) {
+    constructor(private hotelService: HotelService, private roomService: RoomService, private router: Router,) {
         this.hotelService.readAllNames().subscribe(
             data => this.hotelNames = data
         );
@@ -53,6 +56,7 @@ export class RoomSearchComponent implements OnInit {
 
     }
     bookRoom(id) {
+        this.router.navigate([HomeComponent.URL, RoomBookingComponent.URL]);
         console.log(id);
     }
 }
