@@ -7,6 +7,7 @@ import { HomeComponent } from '../home.component';
 import { HotelService } from '../shared/hotel.service';
 import { FormControl } from '@angular/forms';
 import { RoomService } from '../shared/room.service';
+import { UserService } from '../shared/user.service';
 import { Book } from '../shared/book.model';
 import { BookService } from '../shared/book.service';
 
@@ -16,15 +17,20 @@ import { BookService } from '../shared/book.service';
 export class RoomBookingComponent implements OnInit {
     static URL = 'roomBooking';
 
+    book : Book;
     title = 'Reserva de habitaciones';
     columns = ['company'];
     onlyActive = true;
+
     fecha = new FormControl(new Date());
     fechaSalida = new FormControl(new Date());
     hora = new FormControl();
+    nombreHotel = new FormControl();    
     horaSalida = new FormControl();
+    nombreUsuario: string;
 
-    constructor(private router: Router, private hotelService: HotelService, private roomService: RoomService, private bookService: BookService) {
+    constructor(private router: Router, private hotelService: HotelService, private userService: UserService, private roomService: RoomService, private bookService: BookService) {
+        this.userService.loggedInUsername().subscribe(user=> this.nombreUsuario = user.email);
     }
 
     ngOnInit(): void {
@@ -34,7 +40,7 @@ export class RoomBookingComponent implements OnInit {
         this.router.navigate([HomeComponent.URL, RoomSearchComponent.URL]);
     }
 
-    book(book: Book) {
-        this.bookService.book(book.nombreHotel, book.nombreUsuario, book.fecha, book.fechaSalida, book.hora, book.horaSalida);
+    bookRoom() {
+        this.bookService.book(this.nombreHotel.value, this.nombreUsuario, this.fecha.value, this.fechaSalida.value, this.hora.value + ":00", this.horaSalida.value + ":00");
     }
 }
