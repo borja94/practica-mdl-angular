@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { HttpService } from '../../core/http.service';
+import { Book } from './book.model';
 
 @Injectable()
 export class BookService {
@@ -22,7 +23,7 @@ export class BookService {
             .post(BookService.END_POINT);
     }
 
-    getUserbooks(nombreUsuario: string) {
+    getUserbooks(nombreUsuario: string): Observable<Book[]> {
         return this.httpService.authToken()
             .param('nombreUsuario', nombreUsuario.toString())
             .get(BookService.END_POINT);
