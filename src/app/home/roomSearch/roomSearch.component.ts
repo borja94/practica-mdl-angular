@@ -15,6 +15,11 @@ export class RoomSearchComponent implements OnInit {
     hotels = new FormControl();
     roomType = new FormControl();
     searchDate = new FormControl(new Date());
+    fecha = new FormControl(new Date());
+    fechaSalida = new FormControl(new Date());
+    hora = new FormControl();
+    nombreHotel = new FormControl();    
+    horaSalida = new FormControl();
 
     title = 'Busqueda de reservas';
     columns = ['company'];
@@ -30,6 +35,7 @@ export class RoomSearchComponent implements OnInit {
     ngOnInit(): void {
         this.searchRoomsByFilters();
     }
+
 
     searchRoomsByFilters() {
         const hotelSelected = this.hotels.value != null ? this.hotels.value : '';
