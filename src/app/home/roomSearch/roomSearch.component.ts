@@ -54,15 +54,23 @@ export class RoomSearchComponent implements OnInit {
                         this.roomsData.length = 0;
 
                         data.forEach(element => {
-                            this.roomsData.push(
-                                {
-                                    id: 1,
-                                    hotel: element.hotelName,
-                                    numRooms: 1,
-                                    description: element.characteristics,
-                                    roomType: element.roomType,
+                            let repetida = false;
+                            this.roomsData.forEach(elementAux => {
+                                if (element.id === elementAux.id) {
+                                    repetida = true;
                                 }
-                            );
+                            });
+                            if (!repetida) {
+                                this.roomsData.push(
+                                    {
+                                        id: element.id,
+                                        hotel: element.hotelName,
+                                        numRooms: 1,
+                                        description: element.characteristics,
+                                        roomType: element.roomType,
+                                    }
+                                );
+                            }
                         });
                     }
                 );
@@ -70,7 +78,7 @@ export class RoomSearchComponent implements OnInit {
     }
 
     bookRoom(id, nombreHotel) {
-        this.router.navigate([RoomBookingComponent.URL, { id: id , nombreHotel:nombreHotel}]);
+        this.router.navigate(['/roomSearch', { id: 1 }]);
         console.log(id);
     }
 }
