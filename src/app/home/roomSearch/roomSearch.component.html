@@ -1,38 +1,14 @@
 <h1>Busqueda de habitaciones</h1>
 
 <div class="container" fxLayout fxLayout.xs="column" fxLayoutGap="2%">
-    <div fxFlex="13%">
+    <div fxFlex="30%">
         <mat-form-field>
             <mat-select placeholder="Hotels" [formControl]="hotels" multiple>
                 <mat-option *ngFor="let item of hotelNames" [value]="item">{{item}}</mat-option>
             </mat-select>
         </mat-form-field>
     </div>
-    <div fxFlex="15%">
-        <mat-form-field>
-            <input matInput [matDatepicker]="picker" placeholder="Fecha entrada" name="fecha" [formControl]="fecha">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-    </div>
-    <div fxFlex="14%">
-        <mat-form-field>
-            <input matInput type="time"  name="hora" placeholder="Hora Entrada" [formControl]="hora" />
-        </mat-form-field>
-    </div>
-    <div fxFlex="15%">
-        <mat-form-field>
-            <input matInput [matDatepicker]="pickerOut" placeholder="Fecha salida" name="fechaSalida" [formControl]="fechaSalida">
-            <mat-datepicker-toggle matSuffix [for]="pickerOut"></mat-datepicker-toggle>
-            <mat-datepicker #pickerOut></mat-datepicker>
-        </mat-form-field>
-    </div>
-    <div fxFlex="14%">
-        <mat-form-field>
-            <input matInput type="time"  name="horaSalida" placeholder="Hora Salida" [formControl]="horaSalida" />
-        </mat-form-field>
-    </div>
-    <div fxFlex="12%">
+    <div fxFlex="30%">
         <mat-form-field>
             <mat-select placeholder="Tipo de habitación" [formControl]="roomType" multiple>
                 <mat-option value="SINGLE">
@@ -50,6 +26,34 @@
             </mat-select>
         </mat-form-field>
     </div>
+</div>
+<div class="container" fxLayout fxLayout.xs="column" fxLayoutGap="2%">
+
+    <div fxFlex="30%">
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Fecha entrada" name="fecha" [formControl]="fecha">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div fxFlex="20%">
+        <mat-form-field>
+            <input matInput type="number" min="0" max="23" name="hora" placeholder="Hora Entrada" [formControl]="hora" />
+        </mat-form-field>
+    </div>
+    <div fxFlex="30%">
+        <mat-form-field>
+            <input matInput [matDatepicker]="pickerOut" placeholder="Fecha salida" name="fechaSalida" [formControl]="fechaSalida">
+            <mat-datepicker-toggle matSuffix [for]="pickerOut"></mat-datepicker-toggle>
+            <mat-datepicker #pickerOut></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div fxFlex="20%">
+        <mat-form-field>
+            <input matInput type="number" min="0" max="23" name="horaSalida" placeholder="Hora Salida" [formControl]="horaSalida" />
+        </mat-form-field>
+    </div>
+
     <div fxFlex="15%">
         <button mat-fab color="primary" (click)="searchRoomsByFilters()">
             <mat-icon>search</mat-icon>

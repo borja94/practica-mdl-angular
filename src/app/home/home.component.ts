@@ -7,7 +7,7 @@ import { TokensService } from '../core/tokens.service';
 import { UserService } from './shared/user.service';
 import { CancelYesDialogComponent } from '../core/cancel-yes-dialog.component';
 import { RoomSearchComponent } from './roomSearch/roomSearch.component';
-import { RoomBookingComponent } from './roomBooking/roomBooking.component'
+import { RoomBookingComponent } from './roomBooking/roomBooking.component';
 import { HttpService } from '../core/http.service';
 import { Role } from '../core/role.model';
 import { BookingHistoryComponent } from './bookingHistory/bookingHistory.component';
@@ -33,6 +33,7 @@ export class HomeComponent {
     this.userService.loggedInUsername().subscribe(
       user => console.log(user.email)
     );
+    this.router.navigate([HomeComponent.URL, RoomSearchComponent.URL]);
   }
 
   home() {
