@@ -42,4 +42,8 @@ export class HomeComponent {
   roomSearch() {
     this.router.navigate([HomeComponent.URL, RoomSearchComponent.URL]);
   }
+
+  roomBooking() {
+    this.router.navigate([HomeComponent.URL, RoomBookingComponent.URL]);
+  }
 }
