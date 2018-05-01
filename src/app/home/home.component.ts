@@ -29,6 +29,9 @@ export class HomeComponent {
     private httpService: HttpService) {
     this.role = this.httpService.getToken().role;
     console.log(this.httpService.getToken());
+    this.userService.loggedInUsername().subscribe(
+      user => console.log(user.email)
+    );
   }
 
   home() {
