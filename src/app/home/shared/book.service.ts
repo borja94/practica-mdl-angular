@@ -20,7 +20,7 @@ export class BookService {
             .param('fechaSalida', fechaSalida.toISOString())
             .param('hora', hora.toString())
             .param('horaSalida', horaSalida.toString())
-            .get(BookService.END_POINT);
+            .post(BookService.END_POINT);
     }
 
     getUserbooks(nombreUsuario: string): Observable<Book[]> {

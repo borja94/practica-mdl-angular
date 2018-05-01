@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { RoomSearchComponent } from './home/roomSearch/roomSearch.component';
 import { BookingHistoryComponent } from './home/bookingHistory/bookingHistory.component';
+import { RoomBookingComponent } from './home/roomBooking/roomBooking.component';
 
 
 const appRoutes: Routes = [
@@ -16,6 +17,7 @@ const appRoutes: Routes = [
     children: [
       { path: RoomSearchComponent.URL, component: RoomSearchComponent },
       { path: BookingHistoryComponent.URL, component: BookingHistoryComponent },
+      { path: RoomBookingComponent.URL, component: RoomBookingComponent },
     ]
   }
 ];
@@ -27,9 +29,11 @@ const appRoutes: Routes = [
 export class AppRoutingModule {
   static COMPONENTS = [
     HomeComponent,
+    WelcomeComponent,
     RoomSearchComponent,
     BookingHistoryComponent,
     WelcomeComponent,
+    RoomBookingComponent,
   ];
 
   static COMPONENT_FACTORY = [
