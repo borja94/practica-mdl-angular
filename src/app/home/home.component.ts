@@ -9,6 +9,7 @@ import { CancelYesDialogComponent } from '../core/cancel-yes-dialog.component';
 import { RoomSearchComponent } from './roomSearch/roomSearch.component';
 import { HttpService } from '../core/http.service';
 import { Role } from '../core/role.model';
+import { BookingHistoryComponent } from './bookingHistory/bookingHistory.component';
 
 @Component({
   templateUrl: 'home.component.html',
@@ -26,8 +27,8 @@ export class HomeComponent {
     private router: Router,
     private userService: UserService,
     private httpService: HttpService) {
-      this.role = this.httpService.getToken().role;
-      console.log(this.httpService.getToken());
+    this.role = this.httpService.getToken().role;
+    console.log(this.httpService.getToken());
   }
 
   home() {
@@ -40,5 +41,9 @@ export class HomeComponent {
 
   roomSearch() {
     this.router.navigate([HomeComponent.URL, RoomSearchComponent.URL]);
+  }
+
+  bookingHistory() {
+    this.router.navigate([HomeComponent.URL, BookingHistoryComponent.URL]);
   }
 }
