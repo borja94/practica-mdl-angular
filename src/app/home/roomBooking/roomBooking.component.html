@@ -1,0 +1,26 @@
+</div>
+<h1>Reserva de habitaciones</h1>
+
+<div class="basic-container">
+    <mat-form-field>
+        <input matInput type="date" placeholder="Hotel" [(formControl)]="nombreHotel" />
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Fecha entrada" [(formControl)]="fecha">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="time" placeholder="Hour Entrada" [(formControl)]="hora" />
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Fecha salida" [(formControl)]="fechaSalida">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="time" placeholder="Hour Salida" [(formControl)]="horaSalida" />
+    </mat-form-field>
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-button (click)="book()">Booking</button>
+</div>
