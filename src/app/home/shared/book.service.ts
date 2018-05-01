@@ -12,8 +12,9 @@ export class BookService {
     }
 
 
-    book(nombreHotel: string, nombreUsuario: string, fecha: Date, fechaSalida: Date, hora: string, horaSalida: string) {
+    book(id:string, nombreHotel: string, nombreUsuario: string, fecha: Date, fechaSalida: Date, hora: string, horaSalida: string) {
         return this.httpService.authToken()
+            .param('id', id.toString())
             .param('nombreHotel', nombreHotel.toString())
             .param('nombreUsuario', nombreUsuario.toString())
             .param('fecha', fecha.toISOString())

@@ -73,7 +73,7 @@
                 </mat-panel-description>
             </mat-expansion-panel-header>
             {{item.description}}
-            <button mat-raised-button color="primary" (click)="bookRoom(item.id)">Reservar</button>
+            <button mat-raised-button color="primary" (click)="bookRoom(item.id, item.hotel)">Reservar</button>
         </mat-expansion-panel>
 
     </mat-accordion>

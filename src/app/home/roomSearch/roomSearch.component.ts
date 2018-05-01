@@ -68,8 +68,9 @@ export class RoomSearchComponent implements OnInit {
                 );
         }
     }
-    bookRoom(id) {
-        this.router.navigate([HomeComponent.URL, RoomBookingComponent.URL]);
+
+    bookRoom(id, nombreHotel) {
+        this.router.navigate([RoomBookingComponent.URL, { id: id , nombreHotel:nombreHotel}]);
         console.log(id);
     }
 }
