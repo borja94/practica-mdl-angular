@@ -18,6 +18,8 @@ export class RoomBookingComponent implements OnInit {
     title = 'Reserva de habitaciones';
     columns = ['company'];
     onlyActive = true;
+    fecha = new FormControl(new Date());
+    fechaSalida = new FormControl(new Date());
 
     constructor(private router: Router,private hotelService: HotelService, private roomService: RoomService, private bookService: BookService) {
     }
