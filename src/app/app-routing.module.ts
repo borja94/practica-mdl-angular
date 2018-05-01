@@ -5,6 +5,7 @@ import { CancelYesDialogComponent } from './core/cancel-yes-dialog.component';
 import { HomeComponent } from './home/home.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { RoomSearchComponent } from './home/roomSearch/roomSearch.component';
+import { BookingHistoryComponent } from './home/bookingHistory/bookingHistory.component';
 
 
 const appRoutes: Routes = [
@@ -14,6 +15,7 @@ const appRoutes: Routes = [
     path: HomeComponent.URL, component: HomeComponent,
     children: [
       { path: RoomSearchComponent.URL, component: RoomSearchComponent },
+      { path: BookingHistoryComponent.URL, component: BookingHistoryComponent },
     ]
   }
 ];
@@ -26,6 +28,7 @@ export class AppRoutingModule {
   static COMPONENTS = [
     HomeComponent,
     RoomSearchComponent,
+    BookingHistoryComponent,
     WelcomeComponent,
   ];
 
