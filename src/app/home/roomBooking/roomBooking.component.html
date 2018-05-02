@@ -1,25 +1,27 @@
-<h1>Reserva de habitaciones</h1>
-
-<div class="basic-container">
-    <mat-form-field>
-        <input matInput type="text" name="nombreHotel"  placeholder="Hotel" [formControl]="nombreHotel" />
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Fecha entrada" name="fecha" [formControl]="fecha">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput type="number" min="0" max="23" name="hora"  placeholder="Hora Entrada" [formControl]="hora" />
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput [matDatepicker]="pickerOut" placeholder="Fecha salida" name="fechaSalida" [formControl]="fechaSalida">
-        <mat-datepicker-toggle matSuffix [for]="pickerOut"></mat-datepicker-toggle>
-        <mat-datepicker #pickerOut></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput type="number" min="0" max="23" name="horaSalida"  placeholder="Hora Salida" [formControl]="horaSalida" />
-    </mat-form-field>
-    <button mat-button (click)="cancel()">Cancel</button>
-    <button mat-button (click)="bookRoom()">Booking</button>
+<h1>Reserva de habitacion en {{nombreHotel}}</h1>
+<div class="container">
+    <div>
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Fecha entrada" name="fecha" [formControl]="fecha">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [matDatepicker]="pickerOut" placeholder="Fecha salida" name="fechaSalida" [formControl]="fechaSalida">
+            <mat-datepicker-toggle matSuffix [for]="pickerOut"></mat-datepicker-toggle>
+            <mat-datepicker #pickerOut></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <input matInput type="number" min="0" max="23" name="hora" placeholder="Hora Entrada" [formControl]="hora" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" min="0" max="23" name="horaSalida"  placeholder="Hora Salida" [formControl]="horaSalida" />
+        </mat-form-field>
+    </div>
+    <div>
+        <button mat-button (click)="cancel()">Cancel</button>
+        <button mat-button (click)="bookRoom()">Booking</button>
+    </div>
 </div>

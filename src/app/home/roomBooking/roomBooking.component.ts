@@ -12,7 +12,8 @@ import { Book } from '../shared/book.model';
 import { BookService } from '../shared/book.service';
 
 @Component({
-    templateUrl: 'roomBooking.component.html'
+    templateUrl: 'roomBooking.component.html',
+    styleUrls: ['roomBooking.component.css']
 })
 export class RoomBookingComponent implements OnInit {
     static URL = 'roomBooking/:idRoom/hotel/:hotel';
@@ -26,7 +27,7 @@ export class RoomBookingComponent implements OnInit {
     fecha = new FormControl(new Date());
     fechaSalida = new FormControl(new Date());
     hora = new FormControl();
-    nombreHotel = new FormControl();
+    nombreHotel: string;
     horaSalida = new FormControl();
     nombreUsuario: string;
 
@@ -37,7 +38,7 @@ export class RoomBookingComponent implements OnInit {
         private roomService: RoomService,
         private bookService: BookService) {
         this.userService.loggedInUsername().subscribe(user => this.nombreUsuario = user.email);
-        this.nombreHotel.setValue(this.route.snapshot.params['hotel']);
+        this.nombreHotel = this.route.snapshot.params['hotel'];
         this.idRoom = this.route.snapshot.params['idRoom'];
     }
 
@@ -51,7 +52,7 @@ export class RoomBookingComponent implements OnInit {
 
     bookRoom() {
         this.bookService.book(this.idRoom,
-            this.nombreHotel.value, this.nombreUsuario,
+            this.nombreHotel, this.nombreUsuario,
             this.fecha.value, this.fechaSalida.value, this.hora.value + ':00',
             this.horaSalida.value + ':00');
     }
