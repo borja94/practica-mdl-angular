@@ -12,6 +12,7 @@ import { Book } from '../shared/book.model';
 import { BookService } from '../shared/book.service';
 import { ReservaService } from '../../core/reserva.service';
 import { ToastrService } from 'ngx-toastr';
+import { BookingHistoryComponent } from '../bookingHistory/bookingHistory.component';
 
 @Component({
     templateUrl: 'roomBooking.component.html',
@@ -90,7 +91,10 @@ export class RoomBookingComponent implements OnInit {
                 fSalida,
                 this.hora.value + ':00',
                 this.horaSalida.value + ':00').subscribe(
-                    data => console.log(data)
+                    data => {
+                        console.log(data);
+                        this.router.navigate([HomeComponent.URL, BookingHistoryComponent.URL]);
+                    }
                 );
         }
     }
