@@ -54,6 +54,7 @@ export class RoomSearchComponent implements OnInit {
 
 
     searchRoomsByFilters() {
+        this.roomsData = [];
         const hotelSelected = this.hotels.value != null ? this.hotels.value : '';
         const roomTypeSelected = this.roomType.value != null ? this.roomType.value : '';
 

@@ -15,7 +15,7 @@ export class RoomService {
         console.log(hora);
         return this.httpService.authToken()
             .param('startDate', fecha.toISOString())
-            .param('endDate', fecha.toISOString())
+            .param('endDate', fechaSalida.toISOString())
             .param('startHour', hora)
             .param('endHour', horaSalida)
             .param('hotelsName', hotels.toString())
