@@ -8,6 +8,7 @@ import { HomeComponent } from '../home.component';
 import { RoomBookingComponent } from '../roomBooking/roomBooking.component';
 import { ToastrService } from 'ngx-toastr';
 import { ReservaService } from '../../core/reserva.service';
+import { isGeneratedFile } from '@angular/compiler/src/aot/util';
 
 @Component({
     templateUrl: 'roomSearch.component.html',
@@ -28,14 +29,23 @@ export class RoomSearchComponent implements OnInit {
     onlyActive = true;
     roomsData = [];
     hotelNames: string[];
+    roomTypesCollection = ['SINGLE', 'DOUBLE', 'TRIPLE', 'SUITE'];
+
+
     constructor(private hotelService: HotelService,
         private roomService: RoomService,
         private reservaService: ReservaService,
         private router: Router,
         private toast: ToastrService) {
         this.hotelService.readAllNames().subscribe(
-            data => this.hotelNames = data
+            data => {
+                this.hotelNames = data;
+                this.hotels.setValue(data);
+            }
         );
+
+        this.roomType.setValue(this.roomTypesCollection);
+
     }
 
     ngOnInit(): void {
@@ -51,7 +61,22 @@ export class RoomSearchComponent implements OnInit {
             this.toast.warning('Debe rellenar todos los campos de los filtros');
         }
         // tslint:disable-next-line:one-line
+        else if (Number.parseInt(this.hora.value) >= Number.parseInt(this.horaSalida.value)) {
+            this.toast.warning('La hora de salida debe ser mayor que la hora de entrada');
+        }
+        // tslint:disable-next-line:one-line
+        else if (new Date(this.fecha.value) > new Date(this.fechaSalida.value)) {
+            this.toast.warning('La fecha de salida debe ser mayor o igual que la fecha de entrada');
+        }
+        // tslint:disable-next-line:one-line
+        else if (Number.parseInt(this.hora.value) < 0 || Number.parseInt(this.hora.value) > 23 ||
+            Number.parseInt(this.horaSalida.value) < 0 || Number.parseInt(this.horaSalida.value) > 23) {
+            this.toast.warning('Las horas introducidas deben estar entre 0 y 23');
+        }
+        // tslint:disable-next-line:one-line
         else {
+            console.log(Number.parseInt(this.hora.value));
+            console.log(Number.parseInt(this.horaSalida.value));
             this.roomService.searchRooms(this.fecha.value, this.fechaSalida.value,
                 this.hora.value + ':00', this.horaSalida.value + ':00', hotelSelected, roomTypeSelected)
                 .subscribe(
@@ -83,7 +108,7 @@ export class RoomSearchComponent implements OnInit {
         }
     }
 
-    reservar (idRoom: string, nombreHotel: string) {
+    reservar(idRoom: string, nombreHotel: string) {
 
         const reserva: any = {
             idRoom: idRoom,

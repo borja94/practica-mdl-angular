@@ -9,18 +9,7 @@
             </mat-form-field>
             <mat-form-field>
                 <mat-select placeholder="Tipo de habitación" [formControl]="roomType" multiple>
-                    <mat-option value="SINGLE">
-                        SINGLE
-                    </mat-option>
-                    <mat-option value="DOUBLE">
-                        DOUBLE
-                    </mat-option>
-                    <mat-option value="TRIPLE">
-                        TRIPLE
-                    </mat-option>
-                    <mat-option value="SUITE">
-                        SUITE
-                    </mat-option>
+                        <mat-option *ngFor="let item of roomTypesCollection" [value]="item">{{item}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
@@ -31,7 +20,7 @@
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
             <mat-form-field>
-                <input matInput type="number" min="0" max="23" name="hora" placeholder="Hora Entrada" [formControl]="hora" />
+                <input matInput type="number" min="0" max="23" name="hora" placeholder="Hora Entrada (0-23)" [formControl]="hora" />
             </mat-form-field>
         </div>
         <div>
@@ -41,7 +30,7 @@
                 <mat-datepicker #pickerOut></mat-datepicker>
             </mat-form-field>
             <mat-form-field>
-                <input matInput type="number" min="0" max="23" name="horaSalida" placeholder="Hora Salida" [formControl]="horaSalida" />
+                <input matInput type="number" min="0" max="23" name="horaSalida" placeholder="Hora Salida (0-23)" [formControl]="horaSalida" />
             </mat-form-field>
         </div>
         <div class="right">
