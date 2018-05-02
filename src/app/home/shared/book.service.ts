@@ -12,16 +12,19 @@ export class BookService {
     }
 
 
-    book(id:string, nombreHotel: string, nombreUsuario: string, fecha: Date, fechaSalida: Date, hora: string, horaSalida: string) {
+    book(id: string, nombreHotel: string, nombreUsuario: string,
+        fecha: Date, fechaSalida: Date, hora: string, horaSalida: string): Observable<string> {
+        const reserva = {
+            nombreHotel: nombreHotel.toString(),
+            nombreUsuario: nombreUsuario,
+            fecha: fecha.toISOString(),
+            fechaSalida: fechaSalida.toISOString(),
+            hora: hora.toString(),
+            horaSalida: horaSalida.toString(),
+            idHabitacion: id.toString()
+        };
         return this.httpService.authToken()
-            .param('id', id.toString())
-            .param('nombreHotel', nombreHotel.toString())
-            .param('nombreUsuario', nombreUsuario.toString())
-            .param('fecha', fecha.toISOString())
-            .param('fechaSalida', fechaSalida.toISOString())
-            .param('hora', hora.toString())
-            .param('horaSalida', horaSalida.toString())
-            .post(BookService.END_POINT);
+            .post(BookService.END_POINT, reserva);
     }
 
     getUserbooks(nombreUsuario: string): Observable<Book[]> {
