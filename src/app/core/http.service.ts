@@ -18,9 +18,8 @@ import { Error } from './error.model';
 @Injectable()
 export class HttpService {
 
-    static API_END_POINT = 'http://localhost:8080/api/v0';
+    static API_END_POINT = 'https://practica-mdl-spring.herokuapp.com/';
 
-    // static API_END_POINT = 'http://localhost:8080/api/v0';
 
     static UNAUTHORIZED = 401;
 
