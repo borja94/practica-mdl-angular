@@ -6,9 +6,11 @@ import { FormControl } from '@angular/forms';
 import { RoomService } from '../shared/room.service';
 import { HomeComponent } from '../home.component';
 import { RoomBookingComponent } from '../roomBooking/roomBooking.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
-    templateUrl: 'roomSearch.component.html'
+    templateUrl: 'roomSearch.component.html',
+    styleUrls: ['roomSearch.component.css']
 })
 export class RoomSearchComponent implements OnInit {
     static URL = 'roomSearch';
@@ -25,15 +27,17 @@ export class RoomSearchComponent implements OnInit {
     onlyActive = true;
     roomsData = [];
     hotelNames: string[];
-    constructor(private hotelService: HotelService, private roomService: RoomService,
-        private router: Router, public snackBar: MatSnackBar) {
+    constructor(private hotelService: HotelService,
+        private roomService: RoomService,
+        private router: Router,
+        private toast: ToastrService) {
         this.hotelService.readAllNames().subscribe(
             data => this.hotelNames = data
         );
     }
 
     ngOnInit(): void {
-        this.searchRoomsByFilters();
+        // this.searchRoomsByFilters();
     }
 
 
@@ -42,7 +46,7 @@ export class RoomSearchComponent implements OnInit {
         const roomTypeSelected = this.roomType.value != null ? this.roomType.value : '';
 
         if (this.hora.value == null || this.horaSalida.value == null || this.fecha.value == null || this.fechaSalida.value == null) {
-            this.snackBar.open('Debe rellenar todos los campos de los filtros', 'close');
+            this.toast.warning('Debe rellenar todos los campos de los filtros');
         }
         // tslint:disable-next-line:one-line
         else {

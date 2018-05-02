@@ -5,7 +5,8 @@ import { BookService } from '../shared/book.service';
 import { UserService } from '../shared/user.service';
 
 @Component({
-    templateUrl: 'bookingHistory.component.html'
+    templateUrl: 'bookingHistory.component.html',
+    styleUrls: ['bookingHistory.component.css']
 })
 export class BookingHistoryComponent implements OnInit {
     static URL = 'bookingHistory';

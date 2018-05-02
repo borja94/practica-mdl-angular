@@ -1,0 +1,22 @@
+.basic-container {
+    margin-top: 5rem;
+    margin-right: 3rem;
+    margin-bottom: 1rem;
+}
+.center {
+    text-align: center;
+}
+.right {
+    text-align: right;
+    padding-right: 1rem;
+    margin-bottom: 2rem;
+}
+mat-form-field{
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+    width: 13rem;
+}
+
+.margin-2 {
+    margin-left: 2rem;
+}
