@@ -10,13 +10,14 @@ import { RoomService } from '../shared/room.service';
 import { UserService } from '../shared/user.service';
 import { Book } from '../shared/book.model';
 import { BookService } from '../shared/book.service';
+import { ReservaService } from '../../core/reserva.service';
 
 @Component({
     templateUrl: 'roomBooking.component.html',
     styleUrls: ['roomBooking.component.css']
 })
 export class RoomBookingComponent implements OnInit {
-    static URL = 'roomBooking/:idRoom/hotel/:hotel';
+    static URL = 'roomBooking';
 
     book: Book;
     title = 'Reserva de habitaciones';
@@ -24,8 +25,8 @@ export class RoomBookingComponent implements OnInit {
     onlyActive = true;
     idRoom: string;
 
-    fecha = new FormControl(new Date());
-    fechaSalida = new FormControl(new Date());
+    fecha = new FormControl();
+    fechaSalida = new FormControl();
     hora = new FormControl();
     nombreHotel: string;
     horaSalida = new FormControl();
@@ -34,16 +35,19 @@ export class RoomBookingComponent implements OnInit {
     constructor(private route: ActivatedRoute,
         private router: Router,
         private hotelService: HotelService,
+        private reservaService: ReservaService,
         private userService: UserService,
         private roomService: RoomService,
         private bookService: BookService) {
         this.userService.loggedInUsername().subscribe(user => this.nombreUsuario = user.email);
-        this.nombreHotel = this.route.snapshot.params['hotel'];
-        this.idRoom = this.route.snapshot.params['idRoom'];
     }
 
     ngOnInit(): void {
-
+        this.fecha.setValue(this.reservaService.reserva.fechaEntrada);
+        this.fechaSalida.setValue(this.reservaService.reserva.fechaSalida);
+        this.hora.setValue(this.reservaService.reserva.horaEntrada);
+        this.horaSalida.setValue(this.reservaService.reserva.horaSalida);
+        this.nombreHotel = this.reservaService.reserva.nombreHotel;
     }
 
     cancel() {
@@ -51,9 +55,11 @@ export class RoomBookingComponent implements OnInit {
     }
 
     bookRoom() {
-        this.bookService.book(this.idRoom,
-            this.nombreHotel, this.nombreUsuario,
-            this.fecha.value, this.fechaSalida.value, this.hora.value + ':00',
-            this.horaSalida.value + ':00');
+
+        this.bookService.book(this.reservaService.reserva.idRoom,
+            this.reservaService.reserva.nombreHotel, this.nombreUsuario,
+            this.reservaService.reserva.fecha.value, this.reservaService.reserva.fechaSalida.value,
+            this.reservaService.reserva.hora.value + ':00',
+            this.reservaService.reserva.horaSalida.value + ':00');
     }
 }

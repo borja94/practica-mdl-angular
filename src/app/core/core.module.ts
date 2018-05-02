@@ -18,7 +18,7 @@ import {
 import { HttpService } from './http.service';
 import { TokensService } from './tokens.service';
 import { RegisterService } from './register.service';
-
+import { ReservaService } from './reserva.service';
 
 import { DateComponent } from './date.component';
 import { LoginDialogComponent } from './login-dialog.component';
@@ -55,6 +55,7 @@ import { CrudComponent } from './crud.component';
         HttpService,
         TokensService,
         RegisterService,
+        ReservaService,
     ]
 })
 export class CoreModule { }

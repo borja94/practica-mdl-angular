@@ -7,6 +7,7 @@ import { RoomService } from '../shared/room.service';
 import { HomeComponent } from '../home.component';
 import { RoomBookingComponent } from '../roomBooking/roomBooking.component';
 import { ToastrService } from 'ngx-toastr';
+import { ReservaService } from '../../core/reserva.service';
 
 @Component({
     templateUrl: 'roomSearch.component.html',
@@ -29,6 +30,7 @@ export class RoomSearchComponent implements OnInit {
     hotelNames: string[];
     constructor(private hotelService: HotelService,
         private roomService: RoomService,
+        private reservaService: ReservaService,
         private router: Router,
         private toast: ToastrService) {
         this.hotelService.readAllNames().subscribe(
@@ -81,4 +83,20 @@ export class RoomSearchComponent implements OnInit {
         }
     }
 
+    reservar (idRoom: string, nombreHotel: string) {
+
+        const reserva: any = {
+            idRoom: idRoom,
+            nombreHotel: nombreHotel,
+            nombreUsuario: '',
+            fechaEntrada: this.fecha.value,
+            fechaSalida: this.fechaSalida.value,
+            horaEntrada: this.hora.value,
+            horaSalida: this.horaSalida.value
+        };
+
+        this.reservaService.reserva = reserva;
+
+        this.router.navigate(['/home/roomBooking']);
+    }
 }
